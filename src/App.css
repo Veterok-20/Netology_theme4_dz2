@@ -1,6 +1,7 @@
-.App {
+/* .App {
   text-align: center;
-}
+  
+} */
 
 .App-logo {
   height: 40vmin;
@@ -20,7 +21,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(5px + 2vmin);
   color: white;
 }
 
@@ -35,4 +36,85 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;  
+  min-height: 100vh;
+}
+
+.container { 
+  width: 40vw;
+  height: 5em;   
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+table {  
+  margin-top: 1.5em;
+  width: 45vw;
+}
+
+.captionrow {
+margin-left: 2.2em;
+font-size: calc(0.5em + 1vmin);
+}
+
+.inputlabel {
+  margin-top: 2.5em;  
+  display: flex;
+  flex-direction: column;  
+}
+
+.forinput {
+  padding: 1.6em;  
+  border-radius: 8px;
+  width: 10vw;
+  height: 0.005em;
+  margin-top: 0.8em
+}
+
+.forlabel {  
+  font-size: calc(6px + 1vmin);
+}
+
+form button {
+  height: 3.5em;
+  width: 6vw;
+  border-width: 2px;
+  border-radius: 8px;
+  border-style: inset;
+  border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+  background-color: white;
+}
+
+.ramka {
+  width: 40vw;
+  border-width: 2px;
+  border-radius: 8px;
+  border-style: solid;
+  border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+  background-color: white;
+  padding-top: 0.6em;
+}
+
+.celltable {  
+  width: 20vw;
+  height: 2.8em;
+  text-align: center;
+}
+
+.rowbutton {
+  background-color: white;
+  border:0px;
+} 
+
+.icon {
+  height: 24px;
+  width: 24px;
 }
