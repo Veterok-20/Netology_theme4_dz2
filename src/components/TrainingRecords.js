@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import NewRecord from "./NewRecord";
 import RecordsList from "./RecordsList";
+const nanoid = require('nanoid');
 
 export default function TrainingRecords() {
     const [form, SetForm] = useState({
@@ -26,12 +27,16 @@ export default function TrainingRecords() {
         e.preventDefault();
         const workDate = new Date(form.date);
         const ms = workDate.getTime();
+        console.log("records=", records);
         SetRecords((prevRecords) => {
             const index = prevRecords.findIndex((obj) => obj.ms === ms);
             if (index === -1)
                 return ([...prevRecords, {
                     date: form.date, ms: ms,
-                    id: prevRecords[prevRecords.length - 1].id + 1, distance: form.distance
+                    // id: prevRecords[prevRecords.length - 1].id + 1, 
+                    // id:shortid.generate(),
+                    distance: form.distance,
+                    id: nanoid(),
                 }])
             else {
                 prevRecords[index].distance = Number(prevRecords[index].distance) + Number(form.distance);
@@ -49,19 +54,16 @@ export default function TrainingRecords() {
         })
     }
 
-    function handleEdit(e,index) {
-        console.log("records[index].date=", records[index].date);
-        console.log("records[index].distance=", records[index].distance);
-        console.log("e.target.value=", e.target.value);
-        SetForm(
-                { date: records[index].date, 
-                  distance: records[index].distance, 
-                })
-        }
+    function handleEdit(id) {          
+    handleDelete(id);
+    const editObj = records.filter((obj) => obj.id === id);
+    SetForm({date: editObj[0].date,distance: editObj[0].distance,})
+    }
     
 
+
     return (
-        <div className = "main">
+        <div className="main">
             <NewRecord valueDate={form.date} ValueDistance={form.distance} onChange={handleChainge} onSubmit={handleSubmit} />
             <RecordsList records={records} recordDelete={handleDelete} recordEdit={handleEdit} />
         </div>

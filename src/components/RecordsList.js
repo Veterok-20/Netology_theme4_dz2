@@ -4,8 +4,8 @@ import XMark from "./XMark";
 import PropTypes from 'prop-types'; 
 
 export default function RecordsList(prop) {
-    const { records, recordDelete, recordEdit } = prop;
-    records.sort((prev, next) => prev.ms - next.ms);
+    const { records, recordDelete, recordEdit } = prop;   
+    records.sort((prev, next) => prev.ms - next.ms);    
     // records.reverse();
     let reverseRecords = [];
     for (let i = 0; i < records.length; i++) {
@@ -21,17 +21,17 @@ export default function RecordsList(prop) {
             </caption>
 
             <div className="ramka">
-                {reverseRecords.map((obj, index) => {                    
+                {reverseRecords.map((obj) => {                                      
                     if (obj.id === 0) return null;
                     return (
                         <tr key={obj.id}>
                             <td className="celltable">{obj.date}</td>
                             <td className="celltable">{obj.distance}</td>
                             <td className="celltable">
-                                <button className="rowbutton" onClick={() => { recordEdit(index)}}>
+                                <button className="rowbutton" onClick={(e) => { recordEdit(e,obj.id)}}>
                                     <Pencil />
                                 </button>
-                                <button className="rowbutton" onClick={() => { recordDelete(obj.id)}}>
+                                <button className="rowbutton" onClick={(e) => { recordDelete(e,obj.id)}}>
                                     <XMark />
                                 </button>
                             </td>
